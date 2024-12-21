@@ -1,0 +1,5 @@
+- **NodeMCU** + optocoupler to control the remote control.
+- The remote control is powered by a transformer that converts 110V to 12V. No additional resistor is needed as the remote control has sufficient resistance.
+- The NodeMCU connects to Wi-Fi and communicates with an Ubuntu Server using **MQTT**.
+- The Ubuntu server hosts a **Flask server** that listens for HTTP POST requests from the Homebridge plugin configured as a stateless switch type accessory. Upon receiving requests at specific endpoints, the Flask server publishes MQTT messages to the MQTT broker running on the Ubuntu server.
+- Homebridge integrates the system with Apple's smart home ecosystem, enabling communication between the Apple Home app and the remote control.
