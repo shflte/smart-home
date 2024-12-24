@@ -1,0 +1,58 @@
+{
+    "bridge": {
+        "name": "Homebridge 6DEF",
+        "username": "0E:2D:78:5C:6D:EF",
+        "port": 51078,
+        "pin": "153-13-165",
+        "advertiser": "avahi"
+    },
+    "accessories": [
+        {
+            "accessory": "HTTP-SWITCH",
+            "name": "SG 關",
+            "switchType": "stateless",
+            "timeout": 1000,
+            "onUrl": "http://localhost:3738/api/gate/slide/close"
+        },
+        {
+            "accessory": "HTTP-SWITCH",
+            "name": "SG 停",
+            "switchType": "stateless",
+            "timeout": 1000,
+            "onUrl": "http://localhost:3738/api/gate/slide/stop"
+        },
+        {
+            "accessory": "HTTP-SWITCH",
+            "name": "SG 開",
+            "switchType": "stateless",
+            "timeout": 1000,
+            "onUrl": "http://localhost:3738/api/gate/slide/open"
+        },
+        {
+            "accessory": "HTTP-SWITCH",
+            "name": "水壓",
+            "switchType": "stateful",
+            "onUrl": "http://localhost:3738/api/pump/balcony/on",
+            "offUrl": "http://localhost:3738/api/pump/balcony/off",
+            "statusUrl": "http://localhost:3738/api/pump/balcony/status",
+            "mqtt": {
+                "host": "127.0.0.1",
+                "port": 1883,
+                "subscriptions": [
+                    {
+                        "topic": "pump/balcony/status",
+                        "characteristic": "On",
+                        "messagePattern": "on"
+                    }
+                ]
+            }
+        }
+    ],
+    "platforms": [
+        {
+            "name": "Config",
+            "port": 8581,
+            "platform": "config"
+        }
+    ]
+}
