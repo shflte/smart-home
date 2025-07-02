@@ -4,10 +4,10 @@ After=network.target
 
 [Service]
 User=shflte
-WorkingDirectory=/home/shflte/smart_home
-ExecStart=/home/shflte/smart_home/venv/bin/python3 /home/shflte/smart_home/smart_home.py
+WorkingDirectory=/home/shflte/smart-home
+ExecStart=/home/shflte/smart-home/venv/bin/python3 /home/shflte/smart-home/smart_home.py
 Restart=always
-Environment=FLASK_APP=/home/shflte/smart_home/smart_home.py
+Environment=FLASK_APP=/home/shflte/smart-home/smart_home.py
 Environment=FLASK_ENV=production
 
 [Install]
