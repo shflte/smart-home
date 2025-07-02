@@ -40,26 +40,31 @@ def publish_message(topic, message):
 @app.route("/api/gate/slide/open", methods=["GET"])
 def open_gate():
     publish_message(gate_slide_topic, "open")
+    return "OK", 200
 
 
 @app.route("/api/gate/slide/close", methods=["GET"])
 def close_gate():
     publish_message(gate_slide_topic, "close")
+    return "OK", 200
 
 
 @app.route("/api/gate/slide/stop", methods=["GET"])
 def stop_gate():
     publish_message(gate_slide_topic, "stop")
+    return "OK", 200
 
 
 @app.route("/api/pump/balcony/on", methods=["GET"])
 def pump_on():
     publish_message(balcony_pump_topic, "on")
+    return "OK", 200
 
 
 @app.route("/api/pump/balcony/off", methods=["GET"])
 def pump_off():
     publish_message(balcony_pump_topic, "off")
+    return "OK", 200
 
 
 @app.route("/api/pump/balcony/status", methods=["GET"])

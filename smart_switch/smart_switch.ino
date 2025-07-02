@@ -5,14 +5,14 @@
 const char* ssid = "SLC_Deco";
 const char* password = "89706888";
 
-const char* mqtt_server = "192.168.50.128";
+const char* mqtt_server = "192.168.50.144";
 const int mqtt_port = 1883;
 const char* pump_control_topic = "pump/balcony";
 const char* pump_status_topic = "pump/balcony/status";
 
 const int BUTTON_PIN = D5;
-const int RELAY_PIN = D6;
-const int LED_PIN = D7;
+const int RELAY_PIN = 10;  // SD3
+const int LED_PIN = D3;
 
 bool pump_state = false;
 
@@ -21,7 +21,7 @@ PubSubClient client(espClient);
 
 void updateState(bool state) {
     pump_state = state;
-    digitalWrite(RELAY_PIN, state ? HIGH : LOW);
+    digitalWrite(RELAY_PIN, state ? LOW : HIGH);
     digitalWrite(LED_PIN, state ? HIGH : LOW);
 
     client.publish(pump_status_topic, state ? "on" : "off");
@@ -88,7 +88,7 @@ void setup() {
     pinMode(RELAY_PIN, OUTPUT);
     pinMode(LED_PIN, OUTPUT);
 
-    digitalWrite(RELAY_PIN, LOW);
+    digitalWrite(RELAY_PIN, HIGH);
     digitalWrite(LED_PIN, LOW);
 
     EEPROM.begin(1);

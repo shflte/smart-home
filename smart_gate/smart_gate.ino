@@ -4,7 +4,7 @@
 const char* ssid = "SLC_Deco";
 const char* password = "89706888";
 
-const char* mqtt_server = "192.168.50.128";
+const char* mqtt_server = "192.168.50.144";
 const int mqtt_port = 1883;
 const char* mqtt_user = "";
 const char* mqtt_password = "";
